@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);  
 var io = require('socket.io')(server);
+
 var Twitter = require('twitter');
 var client = new Twitter({
   consumer_key: 'cwp0ifDWfOJYKbJWcjSxTW9M7',
@@ -9,6 +10,7 @@ var client = new Twitter({
   access_token_key: '3341047145-C0UZ7wWTQlJqQQogZSWp5aKeDekWYEmpS5UAptF',
   access_token_secret: 'zs2ER8NbcKKosw3nnHOH7VBQEj1d3dfLO3lCnkSXupVIa'
 });
+
 // je déclare mes fichiers statiques
 app.use('/app', express.static('./client/app'));
 // app.use('/css', express.static('./client/css'));
@@ -17,7 +19,7 @@ app.get('/', function(req, res) {
 });
 
 server.listen(3000, function() {
-            console.log('listening on 3000 and database is connected');
+            console.log('listening on 3000');
 });
 io.sockets.on('connection', function (socket) {
     console.log("un client est connecté");
